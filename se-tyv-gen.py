@@ -1,6 +1,6 @@
 import pickle
 from datetime import datetime
-from random import randint
+from random import randint, random
 
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -15,9 +15,9 @@ options = Options()
 options.headless = True
 driver = webdriver.Chrome(service=Service('./chromedriver.exe'), options=options)
 results = []
-for i in tqdm(range(2000)):
+for i in tqdm(range(500)):
     try:
-        results.append(generate_tyv(driver, 0.5, 0.5))
+        results.append(generate_tyv(driver, random(), random()))
     except Exception as e:
         print(e)
         driver.quit()
